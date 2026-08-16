@@ -1,0 +1,124 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --primary: #093421;
+  --primary-container: #1b5e20;
+  --surface: #f9faf6;
+  --surface-lowest: #ffffff;
+  --outline: #d8ddd6;
+  --font-arabic: 'IBM Plex Sans Arabic', sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-tap-highlight-color: transparent;
+}
+
+body {
+  font-family: var(--font-arabic);
+  direction: rtl;
+  text-align: right;
+  background-color: #f9faf6;
+  color: #171d18;
+  overflow-x: hidden;
+}
+
+/* Material Symbols & Icon styling */
+.material-symbols-outlined {
+  font-family: 'Material Symbols Outlined' !important;
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;
+  line-height: 1;
+  letter-spacing: normal;
+  text-transform: none;
+  display: inline-block;
+  white-space: nowrap;
+  word-wrap: normal;
+  direction: ltr;
+  -webkit-font-feature-settings: 'liga';
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Map Grid Pattern */
+.map-grid-pattern {
+  background-color: #f3f5f1;
+  background-image: radial-gradient(#c2c8bd 1.5px, transparent 1.5px);
+  background-size: 24px 24px;
+}
+
+/* Hide scrollbars for clean tab scroll */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Laser scan animation */
+@keyframes laser-sweep {
+  0% {
+    top: 5%;
+    opacity: 0.2;
+  }
+  50% {
+    top: 85%;
+    opacity: 1;
+  }
+  100% {
+    top: 5%;
+    opacity: 0.2;
+  }
+}
+
+.animate-laser {
+  animation: laser-sweep 2.2s infinite ease-in-out;
+}
+
+/* Pulse animation for active alerts */
+@keyframes subtle-pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+.animate-subtle-pulse {
+  animation: subtle-pulse 2s infinite ease-in-out;
+}
+
+/* Print Stylesheet for A4 & QR Sticker Sheets */
+@media print {
+  body {
+    background: #ffffff !important;
+    color: #000000 !important;
+    font-size: 12pt;
+  }
+  .no-print {
+    display: none !important;
+  }
+  .print-only {
+    display: block !important;
+  }
+  .print-page-break {
+    page-break-after: always;
+  }
+  .qr-print-grid {
+    display: grid !important;
+    grid-template-columns: repeat(3, 1fr) !important;
+    gap: 12mm !important;
+    padding: 10mm !important;
+  }
+  .qr-label-card {
+    border: 1.5px solid #000000 !important;
+    box-shadow: none !important;
+    break-inside: avoid;
+    page-break-inside: avoid;
+    background: #ffffff !important;
+  }
+}
